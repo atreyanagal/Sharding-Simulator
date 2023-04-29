@@ -1,0 +1,199 @@
+{
+	"compiler": {
+		"version": "0.8.6+commit.11564f7e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "message",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "caseId",
+						"type": "uint256"
+					}
+				],
+				"name": "CaseCreated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "message",
+						"type": "string"
+					}
+				],
+				"name": "EvidenceCreated",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_description",
+						"type": "string"
+					}
+				],
+				"name": "createCase",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "caseId",
+						"type": "uint256"
+					}
+				],
+				"name": "getCaseInfo",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					},
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "docId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "baseAdd",
+								"type": "string"
+							}
+						],
+						"internalType": "struct Evidence.CaseInfo[]",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "caseId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "docId",
+						"type": "uint256"
+					}
+				],
+				"name": "getEvidenceInfo",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "caseId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "docId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "baseAdd",
+						"type": "string"
+					}
+				],
+				"name": "insertEvidence",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"frontend\\contracts\\evidence.sol": "Evidence"
+		},
+		"evmVersion": "berlin",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"frontend\\contracts\\evidence.sol": {
+			"keccak256": "0xe709067d61a225d13043da10a7831e857cc1a78889b32c57424139ac87d6b160",
+			"license": "UNLICENSED",
+			"urls": [
+				"bzz-raw://9757fc64d10ce0b444907143c2ba4a12ee1f007a0f8fe60eb42ba85fe6f01d7b",
+				"dweb:/ipfs/QmderMT4prq2LkTCToESwyhpcXuuiy7yZvQPnaknf29QxZ"
+			]
+		}
+	},
+	"version": 1
+}

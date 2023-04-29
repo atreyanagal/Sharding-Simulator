@@ -1,0 +1,11 @@
+{
+    "name": "rsk-react-box",
+    "version": "1.0.0",
+    "dependencies": {
+        "@truffle/hdwallet-provider": "^2.1.2",
+        "bootstrap": "^5.2.3",
+        "react-bootstrap": "^2.7.0",
+        "truffle": "^5.6.7"
+    },
+    "license": "MTI"
+}
