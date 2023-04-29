@@ -1,1 +1,1 @@
-# Block-Chain-Mini-Project
+# Block-Chain-Minor-Project
