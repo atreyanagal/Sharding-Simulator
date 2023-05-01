@@ -4,53 +4,47 @@ import './register.css'
 export class Sharding extends Component {
     state = {
         ...this.props.state,
-        email: "",
-        password: "",
+        shardCount: 0,
         authMessage: ""
     };
 
-    handleEmailInputChange = (e) => {
+    handleShardCountInputChange = (e) => {
         // console.log(this.state)
-        this.setState({ email: e.target.value });
+        this.setState({ shardCount: e.target.value });
     }
-    handlePasswordInputChange = (e) => {
-        this.setState({ password: e.target.value });
-    }
-    handleIdInputChange = (e) => {
-        console.log(e.target.value);
-        console.log(this.state)
-        this.setState({ userId: Number(e.target.value) });
-        console.log(this.state);
-    }
-
+    
     submitDetails = async (event) => {
         event.preventDefault();
         console.log(this.state);
         const { contract } = this.state;
-        const response = await contract[1].methods.login(this.state.userId, this.state.email, this.state.password).call();
-
+        let response = await contract[2].methods.setshardParameters(this.state.shardCount,this.state.shardCount).send({ from: this.state.accounts[0] });
         console.log(response);
-        if (response === "Logged in") {
-            const response1 = await this.state.contract[1].methods.getUserDetails(this.state.userId).call();
-            localStorage.setItem("user", response1);
-            // this.props.navigation.navigate("/CreateCase",this.state);
-            window.location.href = "/CreateCase";
-        }
-        else {
-            this.setState({ authMessage: response });
-        }
+
+
+        // for(let i=0;i<this.state.shardCount;i++){
+        //     response = await contract[2].methods.setShardHash(i,"0xa0ea57091e7f1d8d0c29ae04029d50d67440988ddd1bba093ef9281745d2c08c").send({ from: this.state.accounts[0] });
+        //     console.log(response);
+            
+        //     for(let j=0;j<2;j++){
+        //         response = await contract[2].methods.addValidator(i,this.state.accounts[0]).send({ from: this.state.accounts[0] });
+        //         console.log(response);    
+        //     }
+        // }
+
+
+        
     }
 
 
     render() {
         return (
 
-            <div class="container">
+            <div className="container">
                 <center><h2>Sharding Technique</h2></center>
                 <form onSubmit={this.submitDetails}>
                     <br />
                     <label htmlFor="id">Enter Number Of Shards: </label>
-                    <input required min="1" type="number" name="id" id="id" onChange={this.handleIdInputChange} />
+                    <input required min="1" type="number" name="id" id="id" onChange={this.handleShardCountInputChange} />
                     <br />
                     <br />
                     <input type="submit" value="submit" id='submit' name="submit" />

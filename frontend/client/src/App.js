@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Evidence from "./contracts/Evidence.json";
 import User from "./contracts/userStorage.json";
+import sharding from "./contracts/Sharding.json";
 import getWeb3 from "./getWeb3";
 
 import { Link } from 'react-router-dom'
@@ -25,11 +26,12 @@ class App extends Component {
       const web3 = await getWeb3();
       // Use web3 to get the user's accounts.
       const accounts = await web3.eth.getAccounts();
-      
+      console.log(accounts);
       // Get the contract instance.
       const networkId = await web3.eth.net.getId();
       const deployedNetwork1 = Evidence.networks[networkId];
       const deployedNetwork2 = User.networks[networkId];
+      const deployedNetwork3 = sharding.networks[networkId];
       const evidenceContract = new web3.eth.Contract(
         Evidence.abi,
         deployedNetwork1 && deployedNetwork1.address,
@@ -37,6 +39,10 @@ class App extends Component {
       const userContract = new web3.eth.Contract(
         User.abi,
         deployedNetwork2 && deployedNetwork2.address,
+        );
+      const shardingContract = new web3.eth.Contract(
+        sharding.abi,
+        deployedNetwork3 && deployedNetwork3.address,
         );
 
         
@@ -52,7 +58,7 @@ class App extends Component {
         
         // Set web3, accounts, and contract to the state, and then proceed with an
         // example of interacting with the contract's methods.
-        this.setState({ web3, accounts, contract:[evidenceContract,userContract] });
+        this.setState({ web3, accounts, contract:[evidenceContract,userContract,shardingContract] });
         // console.log(this.state);
     } catch (error) {
       // Catch any errors for any of the above operations.

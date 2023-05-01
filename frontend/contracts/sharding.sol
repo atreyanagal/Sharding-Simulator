@@ -25,15 +25,14 @@ contract Sharding {
     Shard[] s;
 
     event ShardHashUpdated(uint shardNumber, bytes32 shardHash);
+    event Shardss(Shard []);
 
-    function setshardParameters(uint _shardCount, uint _shardSize) public {
-        shardCount = _shardCount;
-        shardSize = _shardSize;
-    }
+    
 
+    Shard ss;
     function setShardHash(uint shardNumber, bytes32 shardHash) public {
         require(shardNumber < shardCount);
-        s.push();
+        s.push(ss);
         uint index = s.length - 1;
         s[index].shardNo = shardNumber;
         s[index].shardAddress = shardHash;
@@ -46,11 +45,14 @@ contract Sharding {
         require(shardNumber < shardCount);
         require(s[shardNumber].shardSize < shardSize);
         //validator memory vv= validator([],s[shardNumber].shardSize, _validator);
-        s[shardNumber].v.push();
+        validator memory vv;
+        s[shardNumber].v.push(vv);
         s[shardNumber].v[s[shardNumber].shardSize].validatorNo=s[shardNumber].shardSize;
         s[shardNumber].v[s[shardNumber].shardSize].validatorAddress=_validator;
         s[shardNumber].shardSize++;
     }
+
+    
 
     function getShard(uint256 shardNumber) public view returns (Shard memory) {
         for (uint i = 0; i < s.length; i++) {
@@ -88,9 +90,10 @@ contract Sharding {
     
     //Evidence e=new Evidence();
     function getBlocks() public{
-        for(uint i=1;i<6;i++){
-            _map.push();
-            for(uint j=1;j<6;j++){
+        uint [] memory m;
+        for(uint i=1;i<3;i++){
+            _map.push(m);
+            for(uint j=1;j<3;j++){
                 // if(e.getBlockNumber(i,j)==0)
                     // break;
                 // _map[i][j] = e.getBlockNumber(i,j);
@@ -119,12 +122,12 @@ contract Sharding {
 
     function assignBlocks() public  {
         
-        for(uint i=0;i<5;i++){
-            for(uint j=0;j<5;j++){
+        for(uint i=0;i<2;i++){
+            for(uint j=0;j<2;j++){
                 // if(e.getBlockNumber(i,j)==0)
                     // break;
                 // _map[i][j] = e.getBlockNumber(i,j);
-                for(uint i=0;i<10;i++)
+                for(uint k=0;k<10;k++)
                 {
 
                 }
@@ -251,5 +254,21 @@ contract Sharding {
         }
 
         return keys2;    
+    }
+
+    function setshardParameters(uint _shardCount, uint _shardSize) public{
+        shardCount = _shardCount;
+        shardSize = _shardSize;
+        for(uint i=0;i<shardCount;i++){
+            setShardHash(i, 0xa0ea57091e7f1d8d0c29ae04029d50d67440988ddd1bba093ef9281745d2c08c);
+            for(uint j=0;j<shardSize;j++){
+                addValidator(i, 0x9801689c36151683B789Ec22Fcd0b7fe9DBCc88e);
+            }
+        }
+        getBlocks();
+        assignBlocks();
+        emit Shardss(s);
+        rebalanceNodes();
+        emit Shardss(s);
     }
 }
