@@ -79,7 +79,7 @@ export class Getevidence extends Component {
                             <>
                               <p>Case ID: {this.state.message[0]}</p>
                               <p>Evidence ID: {this.state.message[1]}</p>
-                              <img alt="images" src={this.state.message[2]} />
+                              <a href={`https://dweb.link/ipfs/${this.state.message[2]}`}> click here </a>
                             </>
                             :
 

@@ -71,7 +71,7 @@ export class Getcase extends Component {
                               <br />
                               <h3>Evidence ID:{element[0]}</h3>
                               <br />
-                              <img alt="hello" src={element[1]} />
+                              <a href={`https://dweb.link/ipfs/${element[1]}`}> click here </a>
                               <br />
                             </>
                           )))}

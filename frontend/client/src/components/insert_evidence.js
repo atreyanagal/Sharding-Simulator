@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+import { Web3Storage } from 'web3.storage';
+const client = new Web3Storage({token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDY5RTJiOEM2QjYxMzE1QzM3MDM3NGQyN2M3NkFkYzQyODI1MEM3YkYiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2ODI5NjAyNjE1NTYsIm5hbWUiOiJzaGFyZGluZyJ9.TzhNermbnVl5nDOgs3iK3CbG5hW76c2E1-lRjCf9h68"});
 export class Insertevidence extends Component {
   state = {
     ...this.props.state,
@@ -29,10 +30,13 @@ export class Insertevidence extends Component {
 
   handleChangeEvidenceDetails = async (e) => {
     console.log(e.target.files);
-    const file = e.target.files[0];
-    const base64 = await this.convertToBase64(file);
-    console.log(base64);
-    this.setState({ memory: base64 });
+    const file = e.target.files;
+    this.setState({ memory: file[0] });
+    // const {datatransfer:{files}} =e.target.files;
+    // const reader = new FileReader();
+    // reader.readAsArrayBuffer(file[0]);
+    // const base64 = await this.convertToBase64(file);
+    // console.log(base64);
   }
 
 
@@ -43,8 +47,10 @@ export class Insertevidence extends Component {
 
     const ownerShipCases = await contract[1].methods.getOwnershipCases(Number(localStorage.getItem("user")[0])).call();
     console.log(ownerShipCases);
+    const cid = await client.put([this.state.memory]);
+    console.log('Content added with CID:', cid);
     if (ownerShipCases.includes(this.state.caseId) === true) {
-      const response = await contract[0].methods.insertEvidence(this.state.caseId, this.state.evidenceId, this.state.memory).send({ from: this.state.accounts[0] });
+      const response = await contract[0].methods.insertEvidence(this.state.caseId, this.state.evidenceId, cid).send({ from: this.state.accounts[0] });
       console.log(response);
       this.setState({ message: response.events.EvidenceCreated.returnValues.message });
     }

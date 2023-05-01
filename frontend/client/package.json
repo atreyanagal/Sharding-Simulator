@@ -5,11 +5,14 @@
   "dependencies": {
     "bootstrap": "^5.2.3",
     "mdb-react-ui-kit": "^5.0.0",
+    "minimist": "^1.2.8",
+    "process": "^0.11.10",
     "react": "16.11.0",
     "react-dom": "16.11.0",
     "react-router-dom": "^6.4.3",
     "react-scripts": "^5.0.1",
-    "web3": "^1.8.0"
+    "web3": "^1.8.0",
+    "web3.storage": "^4.5.4"
   },
   "scripts": {
     "start": "react-scripts start",
