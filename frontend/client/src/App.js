@@ -13,6 +13,7 @@ import { Insertevidence } from "./components/insert_evidence";
 import "./App.css";
 import { Login } from "./components/login";
 import { Register } from "./components/register";
+import { Sharding } from "./components/Sharding";
 import { Logout } from "./components/logout";
 import { TransferCase } from "./components/transfer_case";
 
@@ -106,6 +107,7 @@ class App extends Component {
                 <Link className="route" to={'/Getevidence'} >Getevidence</Link>
                 <Link className="route" to={'/Insertevidence'} >Insertevidence</Link>
                 <Link className="route" to={'/TransferCase'} >TransferCase</Link>
+                <Link className="route" to={'/Sharding'} >Sharding</Link>
                 <Link className="route" to={'/Logout'}>Logout</Link>
             </nav>
 
@@ -130,6 +132,7 @@ class App extends Component {
                 <Route path='Login' element={<Login state={this.state}/>} />
                 <Route path='Logout' element={<Logout state={this.state}/>} />
                 <Route path='Register' element={<Register state={this.state}/>} />
+                <Route path='Sharding' element={<Sharding state={this.state}/>} />
             </Routes>
         </BrowserRouter>
         

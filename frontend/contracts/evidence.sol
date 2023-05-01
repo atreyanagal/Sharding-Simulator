@@ -10,6 +10,7 @@ contract Evidence {
    struct CaseInfo{
       uint docId;
       string baseAdd;
+      uint blockNo;
    }
    struct Case{
       uint caseId;
@@ -45,6 +46,7 @@ contract Evidence {
             // }
             allCases[caseId].allDocs[docId].docId=docId;
             allCases[caseId].allDocs[docId].baseAdd=baseAdd;
+            allCases[caseId].allDocs[docId].blockNo=block.number;
             allCases[caseId].noOfDocs++;
             emit EvidenceCreated("Evdience Added Successfully");
          }
