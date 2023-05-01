@@ -3,10 +3,10 @@ pragma solidity >=0.5.0 <=0.9.0;
 pragma experimental ABIEncoderV2;
 
 contract Evidence {
-   uint noOfCases;
-   constructor ()public{
-      noOfCases=0;
-   }
+   uint noOfCases=0;
+//    constructor ()public{
+//       noOfCases=0;
+//    }
    struct CaseInfo{
       uint docId;
       string baseAdd;
@@ -59,19 +59,21 @@ contract Evidence {
       }
    }
 
-   function getEvidenceInfo(uint caseId,uint docId) public view returns(uint,uint,string memory){
+   function getEvidenceInfo(uint caseId,uint docId) public view returns(uint,uint,string memory,uint){
       if(caseId!=0 && allCases[caseId].caseId==caseId){
          if(docId!=0 && allCases[caseId].allDocs[docId].docId==docId){
                return (allCases[caseId].caseId,
             allCases[caseId].allDocs[docId].docId,  
-            allCases[caseId].allDocs[docId].baseAdd);
+            allCases[caseId].allDocs[docId].baseAdd,
+            allCases[caseId].allDocs[docId].blockNo
+            );
          }
          else{
-            return(0,0,"DocID doesn't Exist");
+            return(0,0,"DocID doesn't Exist",0);
          }
       }
       else{
-         return(0,0,"CaseID doesn't Exist");
+         return(0,0,"CaseID doesn't Exist",0);
       }
       
    }
@@ -94,5 +96,12 @@ contract Evidence {
          return("Invalid ID",0,"",m);
       }
    } 
-}
 
+   function getBlockNumber(uint caseId, uint docId) public view returns (uint) {
+      if(caseId<= noOfCases && docId<=allCases[caseId].noOfDocs)
+            return allCases[caseId].allDocs[docId].blockNo;
+      return 0;
+   }
+
+
+}
