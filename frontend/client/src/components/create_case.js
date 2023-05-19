@@ -24,8 +24,8 @@ export class Createcase extends Component {
     const response1 = await contract[0].methods.createCase("Creating a Case").send({ from: this.state.accounts[0] });
     console.log(response1)
     this.setState({createdCaseId: response1.events.CaseCreated.returnValues[1]});
-    const response2 = await contract[1].methods.createCase(Number(localStorage.getItem("user")[0]), response1.events.CaseCreated.returnValues[1]).send({ from: this.state.accounts[0] });
-    const response3 = await contract[1].methods.appendIntoChain(Number(localStorage.getItem("user")[0]), Number(response1.events.CaseCreated.returnValues[1]), response1.events.CaseCreated.returnValues[1]).send({ from: this.state.accounts[0] });
+    const response2 = await contract[1].methods.createCase(Number(localStorage.getItem("user").split(",")[0]), response1.events.CaseCreated.returnValues[1]).send({ from: this.state.accounts[0] });
+    const response3 = await contract[1].methods.appendIntoChain(Number(localStorage.getItem("user").split(",")[0]), Number(response1.events.CaseCreated.returnValues[1]), response1.events.CaseCreated.returnValues[1]).send({ from: this.state.accounts[0] });
 
     console.log(response3);
     this.setState({ message: response2 });

@@ -45,7 +45,7 @@ export class Insertevidence extends Component {
     const { contract } = this.state;
     console.log(this.state.memory);
 
-    const ownerShipCases = await contract[1].methods.getOwnershipCases(Number(localStorage.getItem("user")[0])).call();
+    const ownerShipCases = await contract[1].methods.getOwnershipCases(Number(localStorage.getItem("user").split(",")[0])).call();
     console.log(ownerShipCases);
     const cid = await client.put([this.state.memory]);
     console.log('Content added with CID:', cid);

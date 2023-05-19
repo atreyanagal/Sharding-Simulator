@@ -196,8 +196,10 @@ export class Sharding extends Component {
         return (
             
             <div>
+                <br/>
+                <center><h2>Sharding Technique</h2></center>
+                <br/>
                 <div className="container">
-                    <center><h2>Sharding Technique</h2></center>
                     <form onSubmit={this.submitDetails}>
                         <br />
                         <label htmlFor="id">Enter Number Of Shards: </label>

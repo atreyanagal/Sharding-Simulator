@@ -20,7 +20,7 @@ export class Getevidence extends Component {
   getEvidence = async () => {
     const { contract } = this.state;
 
-    const onChainCases = await contract[1].methods.getOnChainCases(Number(localStorage.getItem("user")[0])).call();
+    const onChainCases = await contract[1].methods.getOnChainCases(Number(localStorage.getItem("user").split(",")[0])).call();
     console.log(onChainCases);
     if (onChainCases.includes(this.state.caseId) === true) {
       const response = await contract[0].methods.getEvidenceInfo(this.state.caseId, this.state.evidenceId).call();

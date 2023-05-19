@@ -44,27 +44,32 @@ export class Login extends Component {
 
     render() {
         return (
+            
+            <div>
 
-            <div class="container">
-                <center><h2>Welcome Back to Digital Forensic Security</h2></center>
-                <form onSubmit={this.submitDetails}>
-                    <br />
-                    <label htmlFor="email">Email: </label>
-                    <input required type="email" name="email" id="email" onChange={this.handleEmailInputChange} />
-                    <br />
-                    <label htmlFor="password">Password: </label>
-                    <input pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required type="password" name="password" id="password" onChange={this.handlePasswordInputChange} />
-                    <br />
-                    <label htmlFor="id">UserId: </label>
-                    <input required min="1" type="number" name="id" id="id" onChange={this.handleIdInputChange} />
-                    <br />
-                    <br />
-                    <input type="submit" value="submit" id='submit' name="submit" />
-                    <br />
+                <br/>
 
-                    <h4>{this.state.authMessage}</h4>
+                <div class="container">
+                    <center><h2>Welcome Back to Digital Forensic Security</h2></center>
+                    <form onSubmit={this.submitDetails}>
+                        <br />
+                        <label htmlFor="email">Email: </label>
+                        <input required type="email" name="email" id="email" onChange={this.handleEmailInputChange} />
+                        <br />
+                        <label htmlFor="password">Password: </label>
+                        <input pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required type="password" name="password" id="password" onChange={this.handlePasswordInputChange} />
+                        <br />
+                        <label htmlFor="id">UserId: </label>
+                        <input required min="1" type="number" name="id" id="id" onChange={this.handleIdInputChange} />
+                        <br />
+                        <br />
+                        <input type="submit" value="submit" id='submit' name="submit" />
+                        <br />
 
-                </form>
+                        <h4>{this.state.authMessage}</h4>
+
+                    </form>
+                </div>
             </div>
         )
     }

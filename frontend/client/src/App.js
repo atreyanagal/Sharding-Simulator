@@ -101,21 +101,60 @@ class App extends Component {
 
             {this.state.flag===true?  
             
-            <nav>
-                <Link className="route" to={'/CreateCase'}  >CreateCase</Link>
-                <Link className="route" to={'/Getcase'} >Getcase</Link>
-                <Link className="route" to={'/Getevidence'} >Getevidence</Link>
-                <Link className="route" to={'/Insertevidence'} >Insertevidence</Link>
-                <Link className="route" to={'/TransferCase'} >TransferCase</Link>
-                <Link className="route" to={'/Sharding'} >Sharding</Link>
-                <Link className="route" to={'/Logout'}>Logout</Link>
-            </nav>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <div class="container-fluid">
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarNav">
+                      <ul class="navbar-nav">
+                          <li class="nav-item">
+                              <a class="nav-link" href="/CreateCase">CreateCase</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="/Getcase">Getcase</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="/Getevidence">Getevidence</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="/Insertevidence">Insertevidence</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="/TransferCase">TransferCase</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="/Sharding">Sharding</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="/Logout">Logout</a>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+          </nav>
+
 
             :  
             
-            <nav>
-                <Link className="route" to={'/Login'}>Login</Link>
-                <Link className="route" to={'/Register'}>Register</Link>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <div class="container-fluid">
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarNav">
+                      <ul class="navbar-nav">
+                          <li class="nav-item">
+                              <a class="nav-link" href="/Login">Login</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="/Register">Register</a>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
             </nav>
 
             }

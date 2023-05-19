@@ -2,13 +2,11 @@
 pragma solidity >=0.4.21 <=0.9.0;
 pragma experimental ABIEncoderV2;
 
-
 contract userStorage {
     struct User {
         uint256 id;
         string name;
         string role;
-        uint256 age;
         string password;
         string email;
         uint256[] createdCases;
@@ -21,19 +19,19 @@ contract userStorage {
 
     event createUser(string message, uint256);
 
-    function register(string memory _name,string memory _role,uint256 _age,string memory _password,string memory _email) public {
+    function register(string memory _name,string memory _role,string memory _password,string memory _email) public {
         uint256[] memory array1;
         noOfUsers++;
-        users[noOfUsers].id=noOfUsers;
-        users[noOfUsers].name=_name;
-        users[noOfUsers].role=_role;
-        users[noOfUsers].age=_age;
-        users[noOfUsers].password=_password;
-        users[noOfUsers].email=_email;
-        users[noOfUsers].createdCases=array1;
-        users[noOfUsers].onChainCases=array1;
-        users[noOfUsers].ownershipCases=array1;
-        emit createUser("User Created", noOfUsers);
+        uint256 randomnumber = 100000 + uint(keccak256(abi.encodePacked(block.timestamp, msg.sender, noOfUsers))) % 100000;
+        users[randomnumber].id=randomnumber;
+        users[randomnumber].name=_name;
+        users[randomnumber].role=_role;
+        users[randomnumber].password=_password;
+        users[randomnumber].email=_email;
+        users[randomnumber].createdCases=array1;
+        users[randomnumber].onChainCases=array1;
+        users[randomnumber].ownershipCases=array1;
+        emit createUser("User Created", randomnumber);
     }
 
     function login(uint256 _id,string memory _email,string memory _password) public view returns (string memory) {
@@ -86,15 +84,6 @@ contract userStorage {
     //         return (users[_id].role);
     //     } else {
     //         return ("null");
-    //     }
-    // }
-
-    // function readAge(uint256 _id) public view returns (uint256) {
-    //     if (_id > 0 && users[_id].id == _id) {
-    //         return (users[_id].age);
-    //     } else {
-    //         // return ("null");
-    //         return (0);
     //     }
     // }
 
@@ -202,10 +191,6 @@ contract userStorage {
     //     users[_id - 1].role = _job;
     // }
 
-    // function updateAge(uint256 _id, uint256 _age) public {
-    //     users[_id - 1].age = _age;
-    // }
-
     // function updateEmail(uint256 _id, string memory _email) public {
     //     users[_id - 1].name = _email;
     // }
@@ -214,12 +199,10 @@ contract userStorage {
     //     uint256 _id,
     //     string memory _name,
     //     string memory _job,
-    //     uint256 _age,
     //     string memory _email
     // ) public {
     //     users[_id - 1].name = _name;
     //     users[_id - 1].role = _job;
-    //     users[_id - 1].age = _age;
     //     users[_id - 1].email = _email;
     // }
 
